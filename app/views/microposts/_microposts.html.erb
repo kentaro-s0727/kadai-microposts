@@ -9,10 +9,18 @@
         <div>
           <p class="mb-0"><%= micropost.content %></p>
         </div>
-        <div>
-          <% if current_user == micropost.user %>
-             <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
-          <% end %>
+        <div class="container">
+          <div class="row justify-content-start">
+            <% if current_user == micropost.user %>
+              <div class="col-md-1">
+              <%= link_to "Delete", micropost, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+              </div>
+              <div class="offset-md-1"></div>
+            <% end %>
+            <div class="col-md-2">
+              <%= render 'favorites/like_button', micropost: micropost %>
+            </div>
+          </div>
         </div>
       </div>
     </li>
